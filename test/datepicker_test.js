@@ -1132,6 +1132,14 @@ describe("DatePicker", () => {
     TestUtils.Simulate.focus(ReactDOM.findDOMNode(dateInput));
     expect(datePicker.state.open).to.be.false;
   });
+  it("Should not set open state when clicking on the date input and the preventOpenOnFocus prop is set", () => {
+    const datePicker = TestUtils.renderIntoDocument(
+      <DatePicker preventOpenOnFocus />
+    );
+    const dateInput = datePicker.input;
+    TestUtils.Simulate.click(ReactDOM.findDOMNode(dateInput));
+    expect(datePicker.state.open).to.be.false;
+  });
   it("should not set open state onInputKeyDown when preventOpenOnFocus prop is set", () => {
     const datePicker = TestUtils.renderIntoDocument(
       <DatePicker preventOpenOnFocus />
